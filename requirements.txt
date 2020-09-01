@@ -1,0 +1,20 @@
+# numpy
+# sklearn
+# python-levenshtein
+# nltk
+# tensorflow
+# keras
+# gensim
+# regex
+# pymatgen==2018.11.30
+# sklearn
+# matplotlib
+# chemdataextractor
+# pymongo
+# elasticsearch
+# tqdm
+# pubchempy
+# stanfordcorenlp
+# -e git+https://github.com/materialsintelligence/matscholar-core.git@master#egg=matscholar_core
+# -e git://github.com/LeighWeston86/sequence_tagging.git@master#egg=sequence_tagging
+#
