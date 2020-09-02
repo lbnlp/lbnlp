@@ -1,0 +1,21 @@
+Metadata-Version: 1.1
+Name: lbnlp
+Version: 0.1
+Summary: Common text mining tools for materials data
+Home-page: https://github.com/materialsintelligence/lbnlp
+Author: Alex Dunn
+Author-email: ardunn@lbl.gov
+License: modified BSD
+Description: # lbnlp
+        Common text mining tools for materials science and chemistry, for groups at Lawrence Berkeley National Lab (LBNL) and beyond.
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Other/Nonlisted Topic
+Classifier: Topic :: Scientific/Engineering

@@ -18,3 +18,9 @@
 # -e git+https://github.com/materialsintelligence/matscholar-core.git@master#egg=matscholar_core
 # -e git://github.com/LeighWeston86/sequence_tagging.git@master#egg=sequence_tagging
 #
+
+
+
+# NER sequence tagging
+tensorflow>=1.0
+numpy==1.18.4

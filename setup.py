@@ -36,7 +36,7 @@ setup(
     author_email='ardunn@lbl.gov',
     license='modified BSD',
     packages=find_packages(),
-    package_data=[],
+    package_data={},
     zip_safe=False,
     install_requires=reqs_list,
     extras_require=extras_dict,

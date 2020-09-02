@@ -1,8 +1,8 @@
 import os
 import tensorflow as tf
-from sequence_tagging.model.ner_tf_serving_model import NERServingModel
-from sequence_tagging.model.ner_model import NERModel
-from sequence_tagging.model.config import Config
+from lbnlp.ner.sequence_tagging.model.ner_tf_serving_model import NERServingModel
+from lbnlp.ner.sequence_tagging.model.ner_model import NERModel
+from lbnlp.ner.sequence_tagging.model.config import Config
 from matscholar.process import MatScholarProcess
 from matscholar_core.nlp.normalize import Normalizer
 import warnings
