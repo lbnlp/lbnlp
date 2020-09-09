@@ -1,4 +1,6 @@
 *.py[cod]
+*/__pycache__/*
+
 
 # doc builds
 docs/_build/*
