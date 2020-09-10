@@ -7,4 +7,6 @@
 
 
 
+Matscholar models can be downloaded from [Figshare](https://figshare.com/articles/software/lbnlp_models/12939704) for use with this package
+
 #### Warning: This package is being migrated/condensed from several source repos. It is non-working at the moment. This warning will be removed when it is ready for public usage.
