@@ -1,0 +1,14 @@
+{
+  "models": {
+    "matscholar_ner_2019v1": {
+      "required_modelset": "matscholar_2020v1"
+    }
+  },
+  "modelpkgs": {
+    "matscholar_2020v1": {
+            "url": "https://ndownloader.figshare.com/files/24642317",
+            "zip_fname": "models_1009202.zip",
+            "hash": "3f8353526062856cc6e4037a0e6f05173cbbb86efb72c2d2a558e096d8b2e465"
+    }
+  }
+}

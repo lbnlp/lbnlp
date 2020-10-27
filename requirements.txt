@@ -20,6 +20,8 @@
 #
 
 
+scratchdir==1.0.2
+
 
 # NER sequence tagging
 tensorflow>=1.0
