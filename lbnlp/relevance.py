@@ -1,8 +1,7 @@
 import dill
 import numpy as np
 
-
-from lbnlp.nlp.process import MatScholarProcess
+from lbnlp.process.matscholar import MatScholarProcess
 
 
 class RelevanceClassifier:

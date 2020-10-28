@@ -2,8 +2,8 @@ import os
 
 from lbnlp.models.fetch import ModelPkgLoader
 from lbnlp.models.util import load_pickle, check_versions, model_loader_setup
-from lbnlp.nlp.relevance import RelevanceClassifier
-from lbnlp.nlp.process import MatScholarProcess
+from lbnlp.relevance import RelevanceClassifier
+from lbnlp.process.matscholar import MatScholarProcess
 
 pkg = ModelPkgLoader("matscholar_2020v1")
 
@@ -27,7 +27,7 @@ def load_relevance_model(basepath):
 
 
 def load_ner(basepath):
-
+    pass
 
 
 if __name__ == "__main__":
