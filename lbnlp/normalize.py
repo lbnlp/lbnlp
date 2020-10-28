@@ -1,23 +1,23 @@
 import json
 import os
 import re
-from matscholar_core.nlp.material_parser import MaterialParser
-from matscholar_core.processing.parsing import SimpleParser
+from lbnlp.parse.material import MaterialParser
+from lbnlp.parse.simple import SimpleParser
 from chemdataextractor.doc import Paragraph
 
 
-class Normalizer(object):
+class Normalizer:
     """
     A class to perform entity normalization.
     """
 
-    def __init__(self):
+    def __init__(self, data_path, material_parser_data_path):
         """
         Constructor method for Normalizer.
         """
 
-        self.normal_dict = NormalDict()
-        self.mat_normalizer = MatNormalizer()
+        self.normal_dict = NormalDict(data_path)
+        self.mat_normalizer = MatNormalizer(data_path, material_parser_data_path)
 
     # TODO: Make this normalize a single document
     def normalize(self, raw_docs, tagged_docs):
@@ -112,16 +112,14 @@ class NormalDict(dict):
         "CMT"
     ]
 
-    def __init__(self):
+    def __init__(self, data_path):
         """
         A dictionary for mapping entities onto their normalized form
         """
 
         super().__init__()
-        local_dir = os.path.dirname(__file__)
         for key in self.DICT_KEYS:
-            dict_path = os.path.join(
-                local_dir, "../nlp/models/normalize/{}.json".format(key.lower()))
+            dict_path = os.path.join(data_path, f"{key.lower()}.json")
             with open(dict_path, 'r') as f:
                 dict_ = json.load(f)
             self[key] = {k.upper(): v for k, v in dict_.items()}
@@ -133,7 +131,7 @@ class NormalDict(dict):
             raise KeyError("Invalid key {} for NormalDict".format(item))
 
 
-class MatNormalizer(object):
+class MatNormalizer:
     """
     A class for material normalization. Where possible, each material mention is
     converted to a chemical formula that is alphabetized and divided by the lowest
@@ -173,25 +171,17 @@ class MatNormalizer(object):
         "arsenide"
     ]
 
-    def __init__(self):
+    def __init__(self, data_path, material_parser_data_path):
         """
         Constructor method for MatNormalizer.
         """
-        self.mp = MaterialParser()
-        self.mp_lookup = MaterialParser(pubchem_lookup=True)
+        self.mp = MaterialParser(data_path=material_parser_data_path)
+        self.mp_lookup = MaterialParser(data_path=material_parser_data_path, pubchem_lookup=True)
         self.matgen_parser = SimpleParser().matgen_parser
-        self.mat_lookup = self._get_mat_lookup()
 
-    @staticmethod
-    def _get_mat_lookup():
-        """
-        Loads the material lookup table.
-        """
-        lookup_dir = os.path.join(
-            os.path.dirname(__file__), "models/normalize")
-        with open(os.path.join(lookup_dir, "mat2formula.json")) as f:
+        with open(os.path.join(data_path, "mat2formula.json")) as f:
             mat_lookup = json.load(f)
-        return mat_lookup
+        self.mat_lookup = mat_lookup
 
     def normalize_mat(self, mat, all_mats, raw_text):
         """

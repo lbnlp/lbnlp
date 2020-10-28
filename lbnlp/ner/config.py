@@ -118,13 +118,12 @@ class Configure(Config):
 
     LOCAL_DIR = os.path.dirname(__file__)
 
-    def __init__(self):
+    def __init__(self, data_dir=None):
         """
         Constructor method for Configure.
         """
 
-        # Path to model data
-        self.dir_data = os.path.join(self.LOCAL_DIR, "models/ner")
+        self.dir_data = self.LOCAL_DIR if not data_dir else data_dir
 
         # Model saving/loading
         self.dir_final_model = os.path.join(self.dir_data, "model.weights/")

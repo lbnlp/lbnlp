@@ -6,24 +6,24 @@ import tensorflow as tf
 
 from lbnlp.ner.serving import NERModel, NERServingModel
 from lbnlp.ner.config import Configure
-from matscholar.process import MatScholarProcess
-from matscholar_core.nlp.normalize import Normalizer
+from lbnlp.process.matscholar import MatScholarProcess
+from lbnlp.normalize import Normalizer
 
 warnings.filterwarnings("ignore")
 
 
-class NERClassifier(object):
+class NERClassifier:
     """
     A class for sequence tagging with named entity recognition.
     """
 
-    def __init__(self):
+    def __init__(self, data_path, normalizer=None, processor=None, enforce_local=False):
         """
         Constructor method for NERClassifier.
         """
 
         # Configure
-        self.config = Configure()
+        self.config = Configure(data_dir=data_path)
         self.config.dim_word = 250
         self.config.dim_char = 50
 
@@ -31,7 +31,7 @@ class NERClassifier(object):
         self.api_url = os.environ.get('TF_SERVING_URL')
         # Load the model
         tf.reset_default_graph()
-        if self.api_url is not None:
+        if not enforce_local and self.api_url:
             self.model = NERServingModel(self.config, api_url=self.api_url)
         else:
             # Make a local NER model if we don't have a remote server (This is significantly slower)
@@ -39,8 +39,8 @@ class NERClassifier(object):
             self.model.build()
             self.model.restore_session(self.config.dir_final_model)
         # Load the normalizer/processor
-        self.normalizer = Normalizer()
-        self.processor = MatScholarProcess()
+        self.normalizer = Normalizer() if not normalizer else normalizer
+        self.processor = MatScholarProcess() if not processor else processor
 
     def tag_sequence(self, sequence):
         """

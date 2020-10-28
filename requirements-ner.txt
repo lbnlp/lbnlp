@@ -1,0 +1,3 @@
+# Requirements for running the ner module on lbnlp
+tensorflow==0.15.0
+numpy==1.18.4

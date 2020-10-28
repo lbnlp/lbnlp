@@ -23,8 +23,3 @@
 monty==3.0.2
 
 ChemDataExtractor==1.3.0
-
-
-# NER sequence tagging
-tensorflow>=1.0
-numpy==1.18.4

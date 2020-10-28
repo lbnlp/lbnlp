@@ -13,7 +13,7 @@ __maintainer__ = "Olga Kononova"
 __email__ = "0lgaGkononova@yandex.ru"
 
 class MaterialParser:
-    def __init__(self, pubchem_lookup=False):
+    def __init__(self, pubchem_lookup=False, data_path=None):
         self.__list_of_elements_1 = ['H', 'B', 'C', 'N', 'O', 'F', 'P', 'S', 'K', 'V', 'Y', 'I', 'W', 'U']
         self.__list_of_elements_2 = ['He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar', 'Ca', 'Sc', 'Ti', 'Cr',
                                      'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr',
@@ -25,7 +25,7 @@ class MaterialParser:
                                      'Fl', 'Lv']
         self.__greek_letters = [chr(i) for i in range(945, 970)]
 
-        self.__filename = os.path.dirname(os.path.realpath(__file__))
+        self.__filename = os.path.dirname(os.path.realpath(__file__)) if not data_path else data_path
 
         self.__chemical_names = self.build_names_dictionary()
 
@@ -581,12 +581,12 @@ class MaterialParser:
     def get_compounds_dictionary(self):
         names_dict = {}
 
-        for line in open(os.path.join(self.__filename, 'models/rsc/inorganic_compounds_dictionary'), encoding="utf-8"):
+        for line in open(os.path.join(self.__filename, 'inorganic_compounds_dictionary'), encoding="utf-8"):
             name, formula = line.strip().split(' – ')
             name = name[0].lower() + name[1:]
             names_dict[name] = formula
 
-        for line in open(os.path.join(self.__filename, 'models/rsc/pub_chem_dictionary'), encoding="utf-8"):
+        for line in open(os.path.join(self.__filename, 'pub_chem_dictionary'), encoding="utf-8"):
             name, formula = line.strip().split(' – ')
             name = name[0].lower() + name[1:]
             names_dict[name] = formula
