@@ -1,4 +1,4 @@
-##  (`lbnlp`)
+## LBNLP
 ##### Lawrence Berkeley National Lab Natural Language Processing
 ###### Common text mining tools for materials science and chemistry, for groups at Lawrence Berkeley National Lab (LBNL) and beyond.
 
