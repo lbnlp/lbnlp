@@ -43,3 +43,17 @@ def check_versions(reqs):
                 except AttributeError:
                     warnings.warn(
                         f"Requirement {req_name} has no version tag! There is no way to ensure the correct version is installed for this model! {suffix}")
+
+
+def model_loader_setup(pkg):
+    def decorator(loader_func):
+        def wrapper(model_name, ignore_requirements):
+            pkg.load()
+            if model_name not in pkg.model_names:
+                raise ValueError(f"Model {model_name} in {pkg.modelpkg_name} not found. Choose from {pkg.model_names}")
+            if not ignore_requirements:
+                check_versions(pkg.model_requirements[model_name])
+
+            return loader_func(model_name, ignore_requirements)
+        return wrapper
+    return decorator

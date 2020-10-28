@@ -10,12 +10,12 @@ class RelevanceClassifier:
     A class to classify documents as relevant/not-relevant to inorganic materials science
     """
 
-    def __init__(self, clf_path, tfidf_path):
+    def __init__(self, clf_path, tfidf_path, processor=None):
         """
         Constructor method for RelevanceClassifier. Loads the classifier and tfidf transformer.
         """
 
-        self.processor = MatScholarProcess()
+        self.processor = processor if processor else MatScholarProcess()
         with open(clf_path, "rb") as f:
             self.clf = dill.load(f)
         with open(tfidf_path, "rb") as f:
