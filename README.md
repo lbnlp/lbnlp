@@ -2,7 +2,7 @@
 ###### Common text mining tools for materials science and chemistry, for groups at Lawrence Berkeley National Lab (LBNL) and beyond.
 
 
-<img src="https://github.com/lbnlp/lbnlp/raw/master/logo.jpg" width="200"/>
+<img src="doc_src/static/lbl_logo.jpg" width="200"/>
 
 
 

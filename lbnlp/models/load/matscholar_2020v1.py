@@ -14,7 +14,7 @@ pkg = ModelPkgLoader("matscholar_2020v1")
 def load(model_name, ignore_requirements=False):
     models_basepath = os.path.join(pkg.structured_path, "models")
 
-    if model_name == "relevance_model":
+    if model_name == "relevance":
         return load_relevance_model(models_basepath)
 
     elif model_name == "ner":

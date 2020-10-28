@@ -1,0 +1,30 @@
+site_name: LBNLP -  Tools for materials NLP
+site_description: Documentation for LBNLP, a collection of NLP tools and models focused on materials discovery.
+copyright: Materials Intelligence
+
+docs_dir: docs_src
+site_dir: docs
+
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: blue
+    accent: blue
+  logo: static/lbnlp_logo.png
+  favicon: static/lbnlp_logo_favico.png
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - footnotes
+  - toc:
+      permalink: true
+
+repo_url: https://github.com/lbnlp/lbnlp
+

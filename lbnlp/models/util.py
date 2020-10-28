@@ -52,7 +52,7 @@ def model_loader_setup(pkg):
             if model_name not in pkg.model_names:
                 raise ValueError(f"Model {model_name} in {pkg.modelpkg_name} not found. Choose from {pkg.model_names}")
             if not ignore_requirements:
-                check_versions(pkg.model_requirements[model_name])
+                check_versions(pkg.models_info[model_name]["requirements"])
 
             return loader_func(model_name, ignore_requirements)
         return wrapper

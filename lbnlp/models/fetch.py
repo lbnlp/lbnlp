@@ -20,8 +20,8 @@ class ModelPkgLoader:
                 f"Model package name {modelpkg_name} not in metadata")
 
         self.metadata_pkg = self.metadata_modelpkgs[modelpkg_name]
-        self.model_requirements = self.metadata_pkg["requirements"]
-        self.model_names = list(self.model_requirements.keys())
+        self.models_info = self.metadata_pkg["models"]
+        self.model_names = list(self.models_info.keys())
         self.file_path = os.path.join(self.pkg_dir, modelpkg_name)
         self.structured_path = os.path.join(self.models_dir, modelpkg_name)
 
