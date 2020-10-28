@@ -1,7 +1,7 @@
 import os
 
 from lbnlp.models.fetch import ModelPkgLoader
-from lbnlp.models.util import load_pickle, check_versions, model_loader_setup
+from lbnlp.models.util import model_loader_setup
 from lbnlp.relevance import RelevanceClassifier
 from lbnlp.ner.clf import NERClassifier
 from lbnlp.normalize import Normalizer

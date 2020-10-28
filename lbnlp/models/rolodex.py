@@ -11,6 +11,7 @@ def print_models_info():
         print(f"Model Package: '{modelpkg}'")
         for model, md in pkginfo["models"].items():
             print(f"\t* '{model}': {md['description']}")
+            print(f"\t\t - More info: {md['citation']}")
 
 if __name__ == "__main__":
     print_models_info()
