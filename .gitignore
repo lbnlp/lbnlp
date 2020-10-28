@@ -52,4 +52,6 @@ nosetests.xml
 dataset_prep.log
 
 # Datasets
-matminer/datasets/*.json.gz
+lbnlp/models/models/*
+lbnlp/models/pkg/*
+lbnlp/models/tmp/*

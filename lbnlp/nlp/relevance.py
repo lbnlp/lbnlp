@@ -1,27 +1,24 @@
-import os
 import dill
 import numpy as np
-from matscholar.process import MatScholarProcess
 
 
-class RelevanceClassifier(object):
+from lbnlp.nlp.process import MatScholarProcess
+
+
+class RelevanceClassifier:
     """
     A class to classify documents as relevant/not-relevant to inorganic materials science
     """
 
-    LOCAL_DIR = os.path.dirname(__file__)
-    CLF_PATH = os.path.join(LOCAL_DIR, "models/relevance_model.p")
-    TFIDF_PATH = os.path.join(LOCAL_DIR, "models/tfidf.p")
-
-    def __init__(self):
+    def __init__(self, clf_path, tfidf_path):
         """
         Constructor method for RelevanceClassifier. Loads the classifier and tfidf transformer.
         """
 
         self.processor = MatScholarProcess()
-        with open(self.CLF_PATH, "rb") as f:
+        with open(clf_path, "rb") as f:
             self.clf = dill.load(f)
-        with open(self.TFIDF_PATH, "rb") as f:
+        with open(tfidf_path, "rb") as f:
             self.tfidf = dill.load(f)
 
     def _preprocess(self, text):
@@ -71,6 +68,7 @@ class RelevanceClassifier(object):
         prob = self.clf.predict_proba(X)[:, 1]
         preds = np.where(prob > decision_boundary, 1, 0)
         return preds
+
 
 if __name__ == "__main__":
     clf = RelevanceClassifier()
