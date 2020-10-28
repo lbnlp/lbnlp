@@ -1,11 +1,13 @@
 import os
+import warnings
+
 import tensorflow as tf
-from lbnlp.ner.sequence_tagging.model.ner_tf_serving_model import NERServingModel
-from lbnlp.ner.sequence_tagging.model.ner_model import NERModel
-from lbnlp.ner.sequence_tagging.model.config import Config
+
+
+from lbnlp.ner.serving import NERModel, NERServingModel
+from lbnlp.ner.config import Configure
 from matscholar.process import MatScholarProcess
 from matscholar_core.nlp.normalize import Normalizer
-import warnings
 
 warnings.filterwarnings("ignore")
 
@@ -182,38 +184,3 @@ class NERClassifier(object):
 
     def close_session(self):
         self.model.close_session()
-
-
-class Configure(Config):
-    """
-    Configuration class for NER model.
-    """
-
-    LOCAL_DIR = os.path.dirname(__file__)
-
-    def __init__(self):
-        """
-        Constructor method for Configure.
-        """
-
-        # Path to model data
-        self.dir_data = os.path.join(self.LOCAL_DIR, "models/ner")
-
-        # Model saving/loading
-        self.dir_final_model = os.path.join(self.dir_data, "model.weights/")
-
-        # vocabulary
-        self.filename_words = os.path.join(self.dir_data, "words.txt")
-        self.filename_tags = os.path.join(self.dir_data, "tags.txt")
-        self.filename_chars = os.path.join(self.dir_data, "chars.txt")
-
-        # Embeddings
-        self.filename_glove = os.path.join(self.dir_data, "w2v.txt")
-        self.filename_trimmed = os.path.join(self.dir_data, "glove.6B.{}d.trimmed.npz".format(200))
-
-        # Output
-        log_path = os.path.join(self.dir_data, "logs.txt")
-        self.dir_output = os.path.join(self.dir_data, "results/")
-
-        # Initialize parent class
-        super().__init__(log_path=log_path)
