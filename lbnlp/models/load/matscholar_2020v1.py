@@ -1,7 +1,5 @@
 import os
 
-from monty.dev import requires
-
 from lbnlp.models.fetch import ModelPkgLoader
 from lbnlp.models.util import load_pickle, check_versions, model_loader_setup
 from lbnlp.nlp.relevance import RelevanceClassifier
@@ -28,7 +26,10 @@ def load_relevance_model(basepath):
     return RelevanceClassifier(clf_path, tfidf_path, processor)
 
 
+def load_ner(basepath):
+
+
 
 if __name__ == "__main__":
-    model = load("relevance_model", ignore_requirements=True)
+    model = load("relevance_model")
     print(model.classify_many(["The polymer was used for an OLED. This can also be used for a biosensor.", "The bandgap of ZnO is 33 eV"]))

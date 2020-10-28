@@ -47,7 +47,7 @@ def check_versions(reqs):
 
 def model_loader_setup(pkg):
     def decorator(loader_func):
-        def wrapper(model_name, ignore_requirements):
+        def wrapper(model_name, ignore_requirements=False):
             pkg.load()
             if model_name not in pkg.model_names:
                 raise ValueError(f"Model {model_name} in {pkg.modelpkg_name} not found. Choose from {pkg.model_names}")
