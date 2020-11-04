@@ -6,10 +6,16 @@ from pip._internal.network.session import PipSession
 this_dir = os.path.dirname(os.path.abspath(__file__))
 pip_requirements = parse_requirements(
     os.path.join(this_dir, "requirements.txt"), PipSession())
-pip_requirements_opt = parse_requirements(
-    os.path.join(this_dir, "requirements-optional.txt"), PipSession())
+
+pip_requirements_ner = parse_requirements(
+    os.path.join(this_dir, "requirements-ner.txt"), PipSession())
 reqs = [pii.requirement for pii in pip_requirements]
-reqs_optional = [pii.requirement for pii in pip_requirements_opt]
+reqs_ner = [pii.requirement for pii in pip_requirements_ner]
+
+
+extras_dict = {
+    "ner": reqs_ner
+}
 
 readme_path = os.path.join(this_dir, "README.md")
 
@@ -26,10 +32,12 @@ setup(
     author_email='ardunn@lbl.gov',
     license='modified BSD',
     packages=find_packages(),
-    package_data={},
+    package_data={
+        "lbnlp.models": ["*.json"]
+    },
     zip_safe=False,
     install_requires=reqs,
-    # extras_require=extras_dict,
+    extras_require=extras_dict,
     classifiers=['Programming Language :: Python :: 2.7',
                  'Programming Language :: Python :: 3.6',
                  'Development Status :: 4 - Beta',

@@ -97,8 +97,8 @@ Let's see how it does in determining relevance for inorganic materials science:
 not_relevant = "The polymer was used for an OLED. This can also be sued for a biosensor."
 relevant = "The bandgap of ZnO is 33 eV"
 
-relevant = clf_model.classify_many([not_relevant, relevant])
-print(relevant)
+relevance = clf_model.classify_many([not_relevant, relevant])
+print(relevance)
 ```
 
 It correctly classifies our sentences:

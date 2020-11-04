@@ -19,7 +19,9 @@
 # -e git://github.com/LeighWeston86/sequence_tagging.git@master#egg=sequence_tagging
 #
 
-
 monty==3.0.2
-
 ChemDataExtractor==1.3.0
+dill==0.3.0
+Unidecode==1.1.1
+pymatgen==2019.9.8
+PubChemPy==1.0.4
