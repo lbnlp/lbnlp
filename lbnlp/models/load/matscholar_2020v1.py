@@ -36,6 +36,25 @@ def load_ner_model(basepath):
     return NERClassifier(ner_path, normalizer, processor, enforce_local=True)
 
 
+
+class NERClassifierConvenienceWrapper:
+    """
+    A convenience wrapper for the frozen NERClassifier, which does some convenient things:
+
+     - multitoken entities
+     - PVT/PUT property simplification to PRO entities
+
+    """
+    def __init__(self, ner_path):
+        processor = MatScholarProcess(phraser_path=os.path.join(ner_path, "embeddings/phraser.pkl"))
+        normalizer = Normalizer(os.path.join(ner_path, "normalize"), os.path.join(ner_path, "rsc"))
+        self.clf = NERClassifier(ner_path, normalizer, processor, enforce_local=True)
+
+    def tag_doc(self, doc):
+
+
+
+
 if __name__ == "__main__":
     # model = load("relevance_model")
     # print(model.classify_many(["The polymer was used for an OLED. This can also be used for a biosensor.", "The bandgap of ZnO is 33 eV"]))
