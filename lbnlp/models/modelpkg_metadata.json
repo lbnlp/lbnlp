@@ -8,6 +8,11 @@
         "description": "Named entity recognition for materials.",
         "citation": "https://doi.org/10.1021/acs.jcim.9b00470"
       },
+      "ner_simple": {
+        "requirements": ["tensorflow==1.15.0"],
+        "description": "A simpler tagging scheme version of the regular matscholar2020v1 NER model.",
+        "citation": "https://doi.org/10.1021/acs.jcim.9b00470"
+      },
       "relevance": {
         "requirements": ["sklearn==0.19.1"],
         "description": "Relevance classification with logistic regression for materials science abstracts.",
