@@ -98,19 +98,20 @@ class NERClassifierConvenienceWrapper:
 if __name__ == "__main__":
     # model = load("relevance_model")
     # print(model.classify_many(["The polymer was used for an OLED. This can also be used for a biosensor.", "The bandgap of ZnO is 33 eV"]))
-
-    model = load("ner")
-
-
-    # doc = "The size of the electron probe is about 1 nm allowing high special resolution. CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic underlayers and the effects of a carbon intermediate layer on magnetic and recording properties were investigated by changing a heating sequence in sample preparations. A heating process before a CoCr deposition was needed to obtain a high perpendicular coercivity. The carbon diffusion into a CoCr layer during its deposition led to small crystal grains in the CoCr layer and thereby the CoCrPt layer. Consequently, a high perpendicular coercivity was obtained, which was considered due to the change in magnetization process from a wall motion to a coherent rotation. The use of a thin (1–5nm) carbon intermediate layer was found to be effective to obtain both low noise and high resolution."
-    doc = "The size of the electron probe is about 1 nm allowing high special resolution. CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic underlayers and the effects of a carbon intermediate layer on magnetic and recording properties were investigated by changing a heating sequence in sample preparations."
-
-    tags = model.tag_doc(doc)
-
-    print(tags)
-
-    nerc = load("ner_simple")
-
-
-    tagsc = nerc.tag_doc(doc)
-    print(tagsc)
+    #
+    # model = load("ner")
+    #
+    #
+    # # doc = "The size of the electron probe is about 1 nm allowing high special resolution. CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic underlayers and the effects of a carbon intermediate layer on magnetic and recording properties were investigated by changing a heating sequence in sample preparations. A heating process before a CoCr deposition was needed to obtain a high perpendicular coercivity. The carbon diffusion into a CoCr layer during its deposition led to small crystal grains in the CoCr layer and thereby the CoCrPt layer. Consequently, a high perpendicular coercivity was obtained, which was considered due to the change in magnetization process from a wall motion to a coherent rotation. The use of a thin (1–5nm) carbon intermediate layer was found to be effective to obtain both low noise and high resolution."
+    # doc = "The size of the electron probe is about 1 nm allowing high special resolution. CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic underlayers and the effects of a carbon intermediate layer on magnetic and recording properties were investigated by changing a heating sequence in sample preparations."
+    #
+    # tags = model.tag_doc(doc)
+    #
+    # print(tags)
+    #
+    # nerc = load("ner_simple")
+    #
+    #
+    # tagsc = nerc.tag_doc(doc)
+    # print(tagsc)
+    pass
