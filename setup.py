@@ -7,14 +7,23 @@ this_dir = os.path.dirname(os.path.abspath(__file__))
 pip_requirements = parse_requirements(
     os.path.join(this_dir, "requirements.txt"), PipSession())
 
-pip_requirements_ner = parse_requirements(
-    os.path.join(this_dir, "requirements-ner.txt"), PipSession())
+pip_requirements_matscholar_2020v1 = parse_requirements(
+    os.path.join(this_dir, "requirements-matscholar_2020v1.txt"), PipSession())
+
+pip_requirements_matbert_ner_2021v1 = parse_requirements(
+    os.path.join(this_dir, "requirements-matbert_ner_2021v1.txt"), PipSession()
+)
+
 reqs = [pii.requirement for pii in pip_requirements]
-reqs_ner = [pii.requirement for pii in pip_requirements_ner]
+
+reqs_matscholar_2020v1 = [pii.requirement for pii in pip_requirements_matscholar_2020v1]
+
+reqs_matbert_ner_2021v1 = [pii.requirement for pii in pip_requirements_matbert_ner_2021v1]
 
 
 extras_dict = {
-    "ner": reqs_ner
+    "matscholar_2020v1": reqs_matscholar_2020v1,
+    "matbert_ner_2021v1": reqs_matbert_ner_2021v1
 }
 
 readme_path = os.path.join(this_dir, "README.md")
