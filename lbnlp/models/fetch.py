@@ -4,6 +4,8 @@ import hashlib
 import zipfile
 import requests
 
+import tqdm
+
 
 class ModelPkgLoader:
     def __init__(self, modelpkg_name):
@@ -46,9 +48,16 @@ class ModelPkgLoader:
             self.is_downloaded = True
         else:
             print(f"Fetching {os.path.basename(self.file_path)} model package from {url} to {self.file_path}", flush=True)
+
+            content_length = requests.get(url, stream=True).headers['Content-length']
+            print(f"Total file size: {int(content_length)/1e9} GB")
+
+            chunk_size = 2048
+            chunks = int(int(content_length)/chunk_size)
+
             r = requests.get(url, stream=True)
             with open(self.file_path, "wb") as file_out:
-                for chunk in r.iter_content(chunk_size=2048):
+                for chunk in tqdm.tqdm(r.iter_content(chunk_size=chunk_size), total=chunks, desc=f"Total chunks of size {chunk_size} bytes downloaded"):
                     file_out.write(chunk)
             r.close()
             self.is_downloaded = True
@@ -59,7 +68,7 @@ class ModelPkgLoader:
         Returns:
 
         """
-        print("Validating ")
+        print(f"Validating downloaded package '{self.modelpkg_name}'...")
         sha256_test = _get_file_sha256_hash(self.file_path)
         sha256_truth = self.metadata_pkg["hash"]
         if sha256_test != sha256_truth:
@@ -73,7 +82,8 @@ class ModelPkgLoader:
         Returns:
 
         """
-        if self.modelpkg_name in ["matscholar_2020v1"]:
+        if self.modelpkg_name in ["matscholar_2020v1", "matbert_ner_2021v1"]:
+            print(f"Extracting file for model package {self.modelpkg_name}...")
             with zipfile.ZipFile(self.file_path, "r") as zipped:
                 zipped.extractall(self.structured_path)
         else:
@@ -85,7 +95,6 @@ class ModelPkgLoader:
             self.download()
             self.validate()
             self.structure()
-
 
 
 def _get_file_sha256_hash(file_path):
@@ -107,4 +116,3 @@ def _get_file_sha256_hash(file_path):
                 break
             sha256hash.update(buffer)
     return sha256hash.hexdigest()
-

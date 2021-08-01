@@ -19,5 +19,32 @@
         "citation": null
       }
     }
+  },
+  "matbert_ner_2021v1": {
+    "url": "https://ndownloader.figshare.com/files/29007825",
+    "hash": "3d3c5c8b3faa1e74a435c28a0c1df01f1c00fe2f711540dc65acdecd4031befa",
+    "models": {
+      "aunp2": {
+        "requirements": ["git+https://github.com/lbnlp/MatBERT_NER@0.2#egg=matbert_ner"],
+        "description": "Named entity recognition for gold nanoparticle adjective descriptions (DES) and noun morphologies (MOR) using BERT pre-trained on materials science text.",
+        "citation": "forthcoming"
+      },
+      "aunp11": {
+        "requirements": ["git+https://github.com/lbnlp/MatBERT_NER@0.2#egg=matbert_ner"],
+        "description": "Named entity recognition for gold nanoparticle with 11 labels using BERT pre-trained on materials science text.",
+        "citation": "forthcoming"
+      },
+      "solid_state": {
+        "requirements": ["git+https://github.com/lbnlp/MatBERT_NER@0.2#egg=matbert_ner"],
+        "description": "Named entity recognition for solid state materials data using BERT pre-trained on materials science text.",
+        "citation": "forthcoming"
+      },
+      "doping": {
+        "requirements": ["git+https://github.com/lbnlp/MatBERT_NER@0.2#egg=matbert_ner"],
+        "description": "Named entity recognition for solid-state doping [DOPANT (dopant species), BASEMAT (host material), DOPMODQ (dopant quantity or carrier density)] using BERT pre-trained on materials science text.",
+        "citation": "forthcoming"
+      }
+    }
+
   }
 }
