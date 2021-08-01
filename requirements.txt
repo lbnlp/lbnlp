@@ -25,3 +25,4 @@ dill==0.3.0
 Unidecode==1.1.1
 pymatgen==2019.9.8
 PubChemPy==1.0.4
+tqdm==4.61.0
