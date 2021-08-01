@@ -14,6 +14,8 @@ theme:
     accent: blue
   logo: static/lbnlp_logo.png
   favicon: static/lbnlp_logo_favico.png
+  features:
+    - navigation.tabs
 
 plugins:
   - search

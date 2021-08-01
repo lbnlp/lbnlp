@@ -68,8 +68,8 @@ ner_model = load("ner")
 Our NER model is now loaded. Let's see what it can do!
 
 ```python
-doc = "CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic"
-    "underlayers and the effects of a carbon intermediate layer on magnetic and "
+doc = "CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic" \
+    "underlayers and the effects of a carbon intermediate layer on magnetic and " \
     "recording properties were investigated"
 
 tags = ner_model.tag_doc(doc)
@@ -95,3 +95,7 @@ The tokens in the doc are annotated:
 Since many of the models were designed, trained, and deployed by different authors with different goals, consult the documentation for the specific model you are interested in under the "Pretrained" section of this documentation.
 
 Each model has its own unique methods to call to obtain the desired results, so follow the guides on the individual pages for the best results.
+
+
+**Each model package will have it's own specific requirements!**. You can find these in the root `lbnlp` directory as `.txt` files interpretable by `pip`, and alternatively in the model package metadata - we will do our best to warn you if a required package is not found before loading a model.
+
