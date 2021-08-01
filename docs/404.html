@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="/static/lbnlp_logo_favico.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.0">
     
     
       
@@ -144,6 +144,39 @@
       
       
         
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="/." class="md-tabs__link md-tabs__link--active">
+        About LBNLP
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="/pretrained/01how2load/" class="md-tabs__link">
+          Pretrained
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -186,7 +219,7 @@
 
   <li class="md-nav__item">
     <a href="/." class="md-nav__link">
-      Note: The LBNLP codebase is currently under migration and major maintenance.
+      About LBNLP
     </a>
   </li>
 
@@ -196,10 +229,72 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Pretrained
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Pretrained" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Pretrained
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
-    <a href="/pretrained/" class="md-nav__link">
+    <a href="/pretrained/01how2load/" class="md-nav__link">
       Loading pretrained models
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/pretrained/02ner/" class="md-nav__link">
+      Models - Named Entity Recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/pretrained/03relevance/" class="md-nav__link">
+      Models - Relevance Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/pretrained/11addyourown/" class="md-nav__link">
+      Adding your own trained models to LBNLP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -255,7 +350,7 @@
       <script>
         app = initialize({
           base: "/",
-          features: [],
+          features: ['navigation.tabs'],
           search: Object.assign({
             worker: "/assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)

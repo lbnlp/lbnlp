@@ -1,0 +1,579 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for LBNLP, a collection of NLP tools and models focused on materials discovery.">
+      
+      
+      
+      <link rel="shortcut icon" href="../../static/lbnlp_logo_favico.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Loading pretrained models - LBNLP -  Tools for materials NLP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#loading-pretrained-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="LBNLP -  Tools for materials NLP" class="md-header-nav__button md-logo" aria-label="LBNLP -  Tools for materials NLP">
+      
+  <img src="../../static/lbnlp_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            LBNLP -  Tools for materials NLP
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Loading pretrained models
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/lbnlp/lbnlp/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        About LBNLP
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          Pretrained
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LBNLP -  Tools for materials NLP" class="md-nav__button md-logo" aria-label="LBNLP -  Tools for materials NLP">
+      
+  <img src="../../static/lbnlp_logo.png" alt="logo">
+
+    </a>
+    LBNLP -  Tools for materials NLP
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lbnlp/lbnlp/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      About LBNLP
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Pretrained
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Pretrained" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Pretrained
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Loading pretrained models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Loading pretrained models
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#view-available-models" class="md-nav__link">
+    View available models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-a-pretrained-model-ner" class="md-nav__link">
+    Load a pretrained model (NER)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-models" class="md-nav__link">
+    Working with models
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../02ner/" class="md-nav__link">
+      Models - Named Entity Recognition
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03relevance/" class="md-nav__link">
+      Models - Relevance Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11addyourown/" class="md-nav__link">
+      Adding your own trained models to LBNLP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#view-available-models" class="md-nav__link">
+    View available models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-a-pretrained-model-ner" class="md-nav__link">
+    Load a pretrained model (NER)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-models" class="md-nav__link">
+    Working with models
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lbnlp/lbnlp/edit/master/docs/pretrained/01how2load.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="loading-pretrained-models">Loading pretrained models<a class="headerlink" href="#loading-pretrained-models" title="Permanent link">&para;</a></h1>
+<p>LBNLP provides easy access to many ready-to-use models for NLP tasks such as:</p>
+<ul>
+<li><strong>Named entity recognition</strong> for inorganic materials (via LSTM)</li>
+<li><strong>Relevance classification</strong> for materials science-related texts (via Logistic Regression)</li>
+<li><strong>Suggestions for scientific journals</strong> (via Doc2Vec)</li>
+<li><strong>Word2Vec embeddings</strong> for various materials-related entities</li>
+<li>And more!</li>
+</ul>
+<h2 id="view-available-models">View available models<a class="headerlink" href="#view-available-models" title="Permanent link">&para;</a></h2>
+<p>View what models are currently available with <code>print_models_info</code></p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">lbnlp.models.rolodex</span> <span class="kn">import</span> <span class="n">print_models_info</span>
+
+<span class="n">print_models_info</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Related models and tools are packaged together in "model packages".</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Model</span> <span class="nl">Package:</span> <span class="p">&#39;</span><span class="n">matscholar_2020v1</span><span class="p">&#39;</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">ner</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">Named</span> <span class="n">entity</span> <span class="n">recognition</span> <span class="k">for</span> <span class="n">materials</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="nl">https:</span><span class="c1">//doi.org/10.1021/acs.jcim.9b00470</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">ner_simple</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">A</span> <span class="n">simpler</span> <span class="n">tagging</span> <span class="n">scheme</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">regular</span> <span class="n">matscholar2020v1</span> <span class="n">NER</span> <span class="n">model</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="nl">https:</span><span class="c1">//doi.org/10.1021/acs.jcim.9b00470</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">relevance</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">Relevance</span> <span class="n">classification</span> <span class="n">with</span> <span class="n">logistic</span> <span class="n">regression</span> <span class="k">for</span> <span class="n">materials</span> <span class="n">science</span> <span class="n">abstracts</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="n">None</span>
+
+<span class="n">Model</span> <span class="nl">Package:</span> <span class="p">&#39;</span><span class="n">matbert_ner_2021v1</span><span class="p">&#39;</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">aunp2</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">Named</span> <span class="n">entity</span> <span class="n">recognition</span> <span class="k">for</span> <span class="n">gold</span> <span class="n">nanoparticle</span> <span class="n">adjective</span> <span class="n">descriptions</span> <span class="p">(</span><span class="n">DES</span><span class="p">)</span> <span class="k">and</span> <span class="n">noun</span> <span class="n">morphologies</span> <span class="p">(</span><span class="n">MOR</span><span class="p">)</span> <span class="n">using</span> <span class="n">BERT</span> <span class="n">pre</span><span class="o">-</span><span class="n">trained</span> <span class="n">on</span> <span class="n">materials</span> <span class="n">science</span> <span class="n">text</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="n">forthcoming</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">aunp11</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">Named</span> <span class="n">entity</span> <span class="n">recognition</span> <span class="k">for</span> <span class="n">gold</span> <span class="n">nanoparticle</span> <span class="n">with</span> <span class="mh">11</span> <span class="n">labels</span> <span class="n">using</span> <span class="n">BERT</span> <span class="n">pre</span><span class="o">-</span><span class="n">trained</span> <span class="n">on</span> <span class="n">materials</span> <span class="n">science</span> <span class="n">text</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="n">forthcoming</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">solid_state</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">Named</span> <span class="n">entity</span> <span class="n">recognition</span> <span class="k">for</span> <span class="n">solid</span> <span class="n">state</span> <span class="n">materials</span> <span class="n">data</span> <span class="n">using</span> <span class="n">BERT</span> <span class="n">pre</span><span class="o">-</span><span class="n">trained</span> <span class="n">on</span> <span class="n">materials</span> <span class="n">science</span> <span class="n">text</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="n">forthcoming</span>
+        <span class="o">*</span> <span class="p">&#39;</span><span class="n">doping</span><span class="p">&#39;</span><span class="o">:</span> <span class="n">Named</span> <span class="n">entity</span> <span class="n">recognition</span> <span class="k">for</span> <span class="n">solid</span><span class="o">-</span><span class="n">state</span> <span class="n">doping</span> <span class="p">[</span><span class="n">DOPANT</span> <span class="p">(</span><span class="n">dopant</span> <span class="n">species</span><span class="p">),</span> <span class="n">BASEMAT</span> <span class="p">(</span><span class="n">host</span> <span class="n">material</span><span class="p">),</span> <span class="n">DOPMODQ</span> <span class="p">(</span><span class="n">dopant</span> <span class="n">quantity</span> <span class="k">or</span> <span class="n">carrier</span> <span class="n">density</span><span class="p">)]</span> <span class="n">using</span> <span class="n">BERT</span> <span class="n">pre</span><span class="o">-</span><span class="n">trained</span> <span class="n">on</span> <span class="n">materials</span> <span class="n">science</span> <span class="n">text</span><span class="p">.</span>
+                 <span class="o">-</span> <span class="n">More</span> <span class="nl">info:</span> <span class="n">forthcoming</span>
+</code></pre></div>
+
+<p>Here, we see there are two models packaged together in the <code>matscholar_2020v1</code> package and four are packaged together in <code>matbert_ner_2021v1</code>. The model package names and the model names are what we will use to load them in the following code.</p>
+<h2 id="load-a-pretrained-model-ner">Load a pretrained model (NER)<a class="headerlink" href="#load-a-pretrained-model-ner" title="Permanent link">&para;</a></h2>
+<p>Model downloads and file management are done automatically. You only need to call a single <code>load</code> function from the model package module
+in order to load and deploy the model locally.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Import the load function from the model package</span>
+<span class="kn">from</span> <span class="nn">lbnlp.models.load.matscholar_2020v1</span> <span class="kn">import</span> <span class="n">load</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p><em>If you get a <code>ModelReqirementError</code>, we recommend installing the package (with specific version) listed in the error. This is to avoid silent errors and annoying errors, as our models were generated with specific dependencies.</em></p>
+<p>Our NER model is now loaded. Let's see what it can do!</p>
+<div class="codehilite"><pre><span></span><code><span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic&quot;</span> \
+    <span class="s2">&quot;underlayers and the effects of a carbon intermediate layer on magnetic and &quot;</span> \
+    <span class="s2">&quot;recording properties were investigated&quot;</span>
+
+<span class="n">tags</span> <span class="o">=</span> <span class="n">ner_model</span><span class="o">.</span><span class="n">tag_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The tokens in the doc are annotated:</p>
+<div class="codehilite"><pre><span></span><code>[[(&#39;CoCrPt&#39;, &#39;B-MAT&#39;), (&#39;/&#39;, &#39;O&#39;), (&#39;CoCr&#39;, &#39;B-MAT&#39;), (&#39;/&#39;, &#39;O&#39;), (&#39;carbon&#39;, &#39;B-MAT&#39;),
+ (&#39;films&#39;, &#39;B-DSC&#39;), (&#39;were&#39;, &#39;O&#39;), (&#39;sputter&#39;, &#39;B-SMT&#39;), (&#39;-&#39;, &#39;I-SMT&#39;),
+(&#39;deposited&#39;, &#39;I-SMT&#39;), (&#39;on&#39;, &#39;O&#39;), (&#39;CoTaZr&#39;, &#39;B-MAT&#39;), (&#39;soft&#39;, &#39;B-PRO&#39;),
+(&#39;-&#39;, &#39;I-PRO&#39;), (&#39;magnetic&#39;, &#39;I-PRO&#39;), (&#39;underlayers&#39;, &#39;I-PRO&#39;), (&#39;and&#39;, &#39;O&#39;),
+ (&#39;the&#39;, &#39;O&#39;), (&#39;effects&#39;, &#39;O&#39;), (&#39;of&#39;, &#39;O&#39;), (&#39;a&#39;, &#39;O&#39;), (&#39;carbon&#39;, &#39;B-MAT&#39;),
+ (&#39;intermediate&#39;, &#39;O&#39;), (&#39;layer&#39;, &#39;B-DSC&#39;), (&#39;on&#39;, &#39;O&#39;), (&#39;magnetic&#39;, &#39;B-PRO&#39;),
+(&#39;and&#39;, &#39;O&#39;), (&#39;recording&#39;, &#39;B-PRO&#39;), (&#39;properties&#39;, &#39;I-PRO&#39;), (&#39;were&#39;, &#39;O&#39;),
+(&#39;investigated&#39;, &#39;O&#39;)]]
+</code></pre></div>
+
+<h2 id="working-with-models">Working with models<a class="headerlink" href="#working-with-models" title="Permanent link">&para;</a></h2>
+<p>Since many of the models were designed, trained, and deployed by different authors with different goals, consult the documentation for the specific model you are interested in under the "Pretrained" section of this documentation.</p>
+<p>Each model has its own unique methods to call to obtain the desired results, so follow the guides on the individual pages for the best results.</p>
+<p><strong>Each model package will have it's own specific requirements!</strong>. You can find these in the root <code>lbnlp</code> directory as <code>.txt</code> files interpretable by <code>pip</code>, and alternatively in the model package metadata - we will do our best to warn you if a required package is not found before loading a model.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../.." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                About LBNLP
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../02ner/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Models - Named Entity Recognition
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Materials Intelligence
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

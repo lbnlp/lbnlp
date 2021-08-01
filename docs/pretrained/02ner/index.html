@@ -1,0 +1,817 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for LBNLP, a collection of NLP tools and models focused on materials discovery.">
+      
+      
+      
+      <link rel="shortcut icon" href="../../static/lbnlp_logo_favico.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Models - Named Entity Recognition - LBNLP -  Tools for materials NLP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#models-named-entity-recognition" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="LBNLP -  Tools for materials NLP" class="md-header-nav__button md-logo" aria-label="LBNLP -  Tools for materials NLP">
+      
+  <img src="../../static/lbnlp_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            LBNLP -  Tools for materials NLP
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Models - Named Entity Recognition
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/lbnlp/lbnlp/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        About LBNLP
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../01how2load/" class="md-tabs__link md-tabs__link--active">
+          Pretrained
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LBNLP -  Tools for materials NLP" class="md-nav__button md-logo" aria-label="LBNLP -  Tools for materials NLP">
+      
+  <img src="../../static/lbnlp_logo.png" alt="logo">
+
+    </a>
+    LBNLP -  Tools for materials NLP
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lbnlp/lbnlp/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      About LBNLP
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Pretrained
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Pretrained" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Pretrained
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../01how2load/" class="md-nav__link">
+      Loading pretrained models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Models - Named Entity Recognition
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Models - Named Entity Recognition
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bilstm-ner-for-solid-state-materials-data" class="md-nav__link">
+    BiLSTM-NER for Solid State Materials Data
+  </a>
+  
+    <nav class="md-nav" aria-label="BiLSTM-NER for Solid State Materials Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matscholar_2020v1-ner" class="md-nav__link">
+    matscholar_2020v1 - ner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bilstm-ner-simpler-model" class="md-nav__link">
+    BiLSTM-NER - Simpler model
+  </a>
+  
+    <nav class="md-nav" aria-label="BiLSTM-NER - Simpler model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matscholar_2020v1-ner_simple" class="md-nav__link">
+    matscholar_2020v1 - ner_simple
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matbert-ner-for-solid-state-gold-nanoparticle-and-dopant-data" class="md-nav__link">
+    MatBERT-NER for Solid State, Gold Nanoparticle, and Dopant data
+  </a>
+  
+    <nav class="md-nav" aria-label="MatBERT-NER for Solid State, Gold Nanoparticle, and Dopant data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matbert_ner_2021v1-solid_state-aunp2-aunp11-and-doping" class="md-nav__link">
+    matbert_ner_2021v1 - solid_state, aunp2, aunp11, and doping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../03relevance/" class="md-nav__link">
+      Models - Relevance Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../11addyourown/" class="md-nav__link">
+      Adding your own trained models to LBNLP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bilstm-ner-for-solid-state-materials-data" class="md-nav__link">
+    BiLSTM-NER for Solid State Materials Data
+  </a>
+  
+    <nav class="md-nav" aria-label="BiLSTM-NER for Solid State Materials Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matscholar_2020v1-ner" class="md-nav__link">
+    matscholar_2020v1 - ner
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bilstm-ner-simpler-model" class="md-nav__link">
+    BiLSTM-NER - Simpler model
+  </a>
+  
+    <nav class="md-nav" aria-label="BiLSTM-NER - Simpler model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matscholar_2020v1-ner_simple" class="md-nav__link">
+    matscholar_2020v1 - ner_simple
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matbert-ner-for-solid-state-gold-nanoparticle-and-dopant-data" class="md-nav__link">
+    MatBERT-NER for Solid State, Gold Nanoparticle, and Dopant data
+  </a>
+  
+    <nav class="md-nav" aria-label="MatBERT-NER for Solid State, Gold Nanoparticle, and Dopant data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matbert_ner_2021v1-solid_state-aunp2-aunp11-and-doping" class="md-nav__link">
+    matbert_ner_2021v1 - solid_state, aunp2, aunp11, and doping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lbnlp/lbnlp/edit/master/docs/pretrained/02ner.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="models-named-entity-recognition">Models - Named Entity Recognition<a class="headerlink" href="#models-named-entity-recognition" title="Permanent link">&para;</a></h1>
+<h2 id="bilstm-ner-for-solid-state-materials-data">BiLSTM-NER for Solid State Materials Data<a class="headerlink" href="#bilstm-ner-for-solid-state-materials-data" title="Permanent link">&para;</a></h2>
+<h3 id="matscholar_2020v1-ner"><code>matscholar_2020v1</code> - <code>ner</code><a class="headerlink" href="#matscholar_2020v1-ner" title="Permanent link">&para;</a></h3>
+<p>The BiLSTM-NER model tags inorganic solid-state entities in materials science. Read more details in <a href="https://doi.org/10.1021/acs.jcim.9b00470">the original publication.</a></p>
+<p>We can import this model from the <code>matscholar_2020v1</code> model package.</p>
+<p><em>Note: this model requires a specific, older version (1.15.0) of tensorflow in order to run.</em></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Import the load function from the model package</span>
+<span class="kn">from</span> <span class="nn">lbnlp.models.load.matscholar_2020v1</span> <span class="kn">import</span> <span class="n">load</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Our NER model is now loaded. Let's annotate a document.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic&quot;</span>
+    <span class="s2">&quot;underlayers and the effects of a carbon intermediate layer on magnetic and &quot;</span>
+    <span class="s2">&quot;recording properties were investigated&quot;</span>
+
+<span class="n">tags</span> <span class="o">=</span> <span class="n">ner_model</span><span class="o">.</span><span class="n">tag_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The tokens in the doc are annotated as tuples according to the IOB (inside entity <code>I</code>, outside entity <code>O</code>, beginning of entity <code>B</code>) scheme to handle multi-token entities and the following entity tags</p>
+<ul>
+<li><code>MAT</code>: material</li>
+<li><code>DSC</code>: description of sample</li>
+<li><code>SPL</code>: symmetry or phase label</li>
+<li><code>SMT</code>: synthesis method</li>
+<li><code>CMT</code>: characterization method</li>
+<li><code>PRO</code>: property - may also include <code>PVL</code> (property value) or <code>PUT</code> (property unit)</li>
+<li><code>APL</code>: application</li>
+</ul>
+<p>An example tag would be <code>B-MAT</code> meaning beginning of a material entity followed by <code>I-MAT</code> meaning a continuation of that material entity.</p>
+<p>The output of our code is a list of sentences - each sentence is a list of tuples coupling the text with the label:</p>
+<div class="codehilite"><pre><span></span><code>[[(&#39;CoCrPt&#39;, &#39;B-MAT&#39;), (&#39;/&#39;, &#39;O&#39;), (&#39;CoCr&#39;, &#39;B-MAT&#39;), (&#39;/&#39;, &#39;O&#39;), (&#39;carbon&#39;, &#39;B-MAT&#39;),
+ (&#39;films&#39;, &#39;B-DSC&#39;), (&#39;were&#39;, &#39;O&#39;), (&#39;sputter&#39;, &#39;B-SMT&#39;), (&#39;-&#39;, &#39;I-SMT&#39;), 
+(&#39;deposited&#39;, &#39;I-SMT&#39;), (&#39;on&#39;, &#39;O&#39;), (&#39;CoTaZr&#39;, &#39;B-MAT&#39;), (&#39;soft&#39;, &#39;B-PRO&#39;), 
+(&#39;-&#39;, &#39;I-PRO&#39;), (&#39;magnetic&#39;, &#39;I-PRO&#39;), (&#39;underlayers&#39;, &#39;I-PRO&#39;), (&#39;and&#39;, &#39;O&#39;),
+ (&#39;the&#39;, &#39;O&#39;), (&#39;effects&#39;, &#39;O&#39;), (&#39;of&#39;, &#39;O&#39;), (&#39;a&#39;, &#39;O&#39;), (&#39;carbon&#39;, &#39;B-MAT&#39;),
+ (&#39;intermediate&#39;, &#39;O&#39;), (&#39;layer&#39;, &#39;B-DSC&#39;), (&#39;on&#39;, &#39;O&#39;), (&#39;magnetic&#39;, &#39;B-PRO&#39;), 
+(&#39;and&#39;, &#39;O&#39;), (&#39;recording&#39;, &#39;B-PRO&#39;), (&#39;properties&#39;, &#39;I-PRO&#39;), (&#39;were&#39;, &#39;O&#39;), 
+(&#39;investigated&#39;, &#39;O&#39;)]]
+</code></pre></div>
+
+<h2 id="bilstm-ner-simpler-model">BiLSTM-NER - Simpler model<a class="headerlink" href="#bilstm-ner-simpler-model" title="Permanent link">&para;</a></h2>
+<h3 id="matscholar_2020v1-ner_simple"><code>matscholar_2020v1</code> - <code>ner_simple</code><a class="headerlink" href="#matscholar_2020v1-ner_simple" title="Permanent link">&para;</a></h3>
+<p>There is an alternative model for NER which simplifies the annotation scheme to not include <code>PVL</code> or <code>PUT</code> and which
+merges <code>B</code>/<code>I</code> multitoken entities into contiguous strings. To use it, use the <code>ner_simple</code> model from <code>matscholar_2020v1</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">lbnlp.models.load.matscholar_2020v1</span> <span class="kn">import</span> <span class="n">load</span>
+
+<span class="n">ner_simple</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;ner_simple&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This model has the same <code>tag_doc</code> interface as the original <code>ner</code> model.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;CoCrPt/CoCr/carbon films were sputter-deposited on CoTaZr soft-magnetic&quot;</span>
+    <span class="s2">&quot;underlayers and the effects of a carbon intermediate layer on magnetic and &quot;</span>
+    <span class="s2">&quot;recording properties were investigated&quot;</span>
+
+<span class="n">tags</span> <span class="o">=</span> <span class="n">ner_simple</span><span class="o">.</span><span class="n">tag_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The output joins the IOB scheme into only the 7 entity types. The rest of the format is identical to the original <code>ner</code> model:</p>
+<div class="codehilite"><pre><span></span><code>[[(&#39;CoCrPt&#39;, &#39;MAT&#39;), (&#39;/&#39;, &#39;O&#39;), (&#39;CoCr&#39;, &#39;MAT&#39;), (&#39;/&#39;, &#39;O&#39;), (&#39;carbon&#39;, &#39;MAT&#39;), 
+(&#39;films&#39;, &#39;DSC&#39;), (&#39;were&#39;, &#39;O&#39;), (&#39;sputter - deposited&#39;, &#39;SMT&#39;), (&#39;on&#39;, &#39;O&#39;), 
+(&#39;CoTaZr&#39;, &#39;MAT&#39;), (&#39;soft - magneticunderlayers&#39;, &#39;PRO&#39;), (&#39;and&#39;, &#39;O&#39;), (&#39;the&#39;, &#39;O&#39;), 
+(&#39;effects&#39;, &#39;O&#39;), (&#39;of&#39;, &#39;O&#39;), (&#39;a&#39;, &#39;O&#39;), (&#39;carbon&#39;, &#39;MAT&#39;), (&#39;intermediate&#39;, &#39;O&#39;), 
+(&#39;layer&#39;, &#39;DSC&#39;), (&#39;on&#39;, &#39;O&#39;), (&#39;magnetic&#39;, &#39;PRO&#39;), (&#39;and&#39;, &#39;O&#39;), 
+(&#39;recording properties&#39;, &#39;PRO&#39;), (&#39;were&#39;, &#39;O&#39;), (&#39;investigated&#39;, &#39;O&#39;)]]
+</code></pre></div>
+
+<h2 id="matbert-ner-for-solid-state-gold-nanoparticle-and-dopant-data">MatBERT-NER for Solid State, Gold Nanoparticle, and Dopant data<a class="headerlink" href="#matbert-ner-for-solid-state-gold-nanoparticle-and-dopant-data" title="Permanent link">&para;</a></h2>
+<h3 id="matbert_ner_2021v1-solid_state-aunp2-aunp11-and-doping"><code>matbert_ner_2021v1</code> - <code>solid_state</code>, <code>aunp2</code>, <code>aunp11</code>, and <code>doping</code><a class="headerlink" href="#matbert_ner_2021v1-solid_state-aunp2-aunp11-and-doping" title="Permanent link">&para;</a></h3>
+<p>Let's load a more involved MatBERT model and use it for an example:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">lbnlp.models.load.matbert_ner_2021v1</span> <span class="kn">import</span> <span class="n">load</span>
+
+<span class="n">bert_ner</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;solid_state&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Let's see if we can tag an excerpt from a materials science abstract.</p>
+<p>The MatBERT-NER model works with lists of texts as input, returning lists of summary documents as output.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;Synthesis of carbon nanotubes by chemical vapor deposition over patterned &quot;</span> \
+      <span class="s2">&quot;catalyst arrays leads to nanotubes grown from specific sites on surfaces.&quot;</span>  \
+      <span class="s2">&quot;The growth directions of the nanotubes can be controlled by van der Waals &quot;</span> \
+      <span class="s2">&quot;self-assembly forces and applied electric fields. The patterned growth &quot;</span> \
+      <span class="s2">&quot;approach is feasible with discrete catalytic nanoparticles and scalable &quot;</span> \
+      <span class="s2">&quot;on large wafers for massive arrays of novel nanowires.&quot;</span> 
+
+<span class="c1"># the MatBERT model is intended to be used with batches (multiple documents at once)</span>
+<span class="c1"># so we just put the doc into a list before tagging</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="n">bert_ner</span><span class="o">.</span><span class="n">tag_docs</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We obtain a summary document for this abstract based on the extracted entities:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[{&#39;</span><span class="n">entities</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">{&#39;</span><span class="n">APL</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[&#39;</span><span class="n">nanotechnology</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">catalyst</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">photochemistry</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">molecular</span> <span class="n">sensors</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">catalytic</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">devices</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">chemical</span> <span class="n">functionalization</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">nanoscience</span><span class="p">&#39;],</span>
+               <span class="p">&#39;</span><span class="n">CMT</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[],</span>
+               <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[&#39;</span><span class="n">nanotubes</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">wafers</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">surfaces</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">nanowires</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">nanoparticles</span><span class="p">&#39;],</span>
+               <span class="p">&#39;</span><span class="n">MAT</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[&#39;</span><span class="n">carbon</span><span class="p">&#39;],</span>
+               <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[&#39;</span><span class="n">electromechanical</span> <span class="n">properties</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">electrical</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">mechanical</span><span class="p">&#39;,</span>
+                       <span class="p">&#39;</span><span class="n">surface</span> <span class="n">chemistry</span><span class="p">&#39;],</span>
+               <span class="p">&#39;</span><span class="n">SMT</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[&#39;</span><span class="n">chemical</span> <span class="n">vapor</span> <span class="n">deposition</span><span class="p">&#39;],</span>
+               <span class="p">&#39;</span><span class="n">SPL</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[]},</span>
+  <span class="p">&#39;</span><span class="n">tokens</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">[[{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">synthesis</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">of</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">MAT</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">carbon</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanotubes</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">by</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">SMT</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">chemical</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">SMT</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">vapor</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">SMT</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">deposition</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">over</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">patterned</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">catalyst</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">arrays</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">leads</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">to</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanotubes</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">grown</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">from</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">specific</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">sites</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">on</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">surfaces</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;.&#39;</span><span class="p">}],</span>
+             <span class="p">[{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">the</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">growth</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">directions</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">of</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">the</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanotubes</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">can</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">be</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">controlled</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">by</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">van</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">der</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">waals</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">self</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;-&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">assembly</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">forces</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">applied</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">electric</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">fields</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;.&#39;</span><span class="p">}],</span>
+             <span class="p">[{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">the</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">patterned</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">growth</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">approach</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">is</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">feasible</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">with</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">discrete</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">catalytic</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanoparticles</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">scalable</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">on</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">large</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">wafers</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">for</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">massive</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">arrays</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">of</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">novel</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanowires</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;.&#39;</span><span class="p">}],</span>
+             <span class="p">[{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">controlled</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">synthesis</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">of</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">DSC</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanotubes</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">opens</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">up</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">exciting</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">opportunities</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">in</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanoscience</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">nanotechnology</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">including</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">electrical</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">mechanical</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">electromechanical</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">properties</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">devices</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">chemical</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">functionalization</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">surface</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">PRO</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">chemistry</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">photochemistry</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">molecular</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">APL</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">sensors</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;,&#39;</span><span class="p">},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="k">and</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">interfacing</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">with</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">soft</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">biological</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="p">&#39;</span><span class="n">systems</span><span class="p">&#39;},</span>
+              <span class="p">{&#39;</span><span class="n">annotation</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;O&#39;</span><span class="p">,</span> <span class="p">&#39;</span><span class="n">text</span><span class="p">&#39;</span><span class="o">:</span> <span class="sc">&#39;.&#39;</span><span class="p">}]]}]</span>
+</code></pre></div>
+
+<p>The <code>entities</code> key represents a summary of each entity found in the document.
+The <code>tokens</code> key contains a dictionary of each token and its associated predicted label, separated into sentences by lists.</p>
+<p>The other models such as <code>doping</code> (3-tag scheme), <code>aunp2</code> (2-tag scheme gold nanoparticle), and <code>aunp11</code> (11-tag scheme for gold nanoparticle)
+will have more explanation in an upcoming publication.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../01how2load/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Loading pretrained models
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../03relevance/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Models - Relevance Classification
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Materials Intelligence
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
