@@ -1,2 +1,2 @@
 # MatBERT-NER lbnlp compatible repo
--e git+https://github.com/lbnlp/MatBERT_NER@0.2#egg=matbert_ner
+matbert_ner @ git+https://github.com/lbnlp/MatBERT_NER@0.2#egg=matbert_ner
