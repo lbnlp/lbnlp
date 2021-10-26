@@ -9,8 +9,7 @@ from gensim.models.phrases import Phraser
 from pymatgen.core.periodic_table import Element
 from pymatgen.core.composition import Composition, CompositionError
 
-model_dir = path.join(path.dirname(__file__), "models/embeddings")
-PHRASER_PATH = path.join(model_dir, 'phraser.pkl')
+PHRASER_PATH = path.join(path.dirname(__file__), 'phraser.pkl')
 
 __author__ = "Vahe Tshitoyan"
 __credits__ = "John Dagdelen, Leigh Weston, Anubhav Jain"
@@ -155,7 +154,7 @@ class MatScholarProcess:
                 convert_num=convert_num,
                 normalize_materials=normalize_materials,
                 remove_accents=remove_accents,
-                make_phrases=make_phrases
+                make_phrases=make_phrases,
             )
 
         processed, mat_list = [], []
