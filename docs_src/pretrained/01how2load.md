@@ -26,26 +26,26 @@ Related models and tools are packaged together in "model packages".
 
 ```stdout
 Model Package: 'matscholar_2020v1'
-        * 'ner': Named entity recognition for materials.
-                 - More info: https://doi.org/10.1021/acs.jcim.9b00470
-        * 'ner_simple': A simpler tagging scheme version of the regular matscholar2020v1 NER model.
-                 - More info: https://doi.org/10.1021/acs.jcim.9b00470
-        * 'relevance': Relevance classification with logistic regression for materials science abstracts.
-                 - More info: None
-
+	* 'ner': Named entity recognition for materials.
+		 - More info: https://doi.org/10.1021/acs.jcim.9b00470
+	* 'ner_simple': A simpler tagging scheme version of the regular matscholar2020v1 NER model.
+		 - More info: https://doi.org/10.1021/acs.jcim.9b00470
+Model Package: 'relevance_2020v1'
+	* 'relevance': Classifier for predicting relevance to materials science text
+		 - More info: https://doi.org/10.1021/acs.jcim.9b00470
 Model Package: 'matbert_ner_2021v1'
-        * 'aunp2': Named entity recognition for gold nanoparticle adjective descriptions (DES) and noun morphologies (MOR) using BERT pre-trained on materials science text.
-                 - More info: forthcoming
-        * 'aunp11': Named entity recognition for gold nanoparticle with 11 labels using BERT pre-trained on materials science text.
-                 - More info: forthcoming
-        * 'solid_state': Named entity recognition for solid state materials data using BERT pre-trained on materials science text.
-                 - More info: forthcoming
-        * 'doping': Named entity recognition for solid-state doping [DOPANT (dopant species), BASEMAT (host material), DOPMODQ (dopant quantity or carrier density)] using BERT pre-trained on materials science text.
-                 - More info: forthcoming
+	* 'aunp11': Named entity recognition for gold nanoparticle with 11 labels using BERT pre-trained on materials science text.
+		 - More info: https://doi.org/10.1016/j.patter.2022.100488
+	* 'aunp2': Named entity recognition for gold nanoparticle adjective descriptions (DES) and noun morphologies (MOR) using BERT pre-trained on materials science text.
+		 - More info: https://doi.org/10.1016/j.patter.2022.100488
+	* 'doping': Named entity recognition for solid-state doping [DOPANT (dopant species), BASEMAT (host material), DOPMODQ (dopant quantity or carrier density)] using BERT pre-trained on materials science text.
+		 - More info: https://doi.org/10.1016/j.patter.2022.100488
+	* 'solid_state': Named entity recognition for solid state materials data using BERT pre-trained on materials science text.
+		 - More info: https://doi.org/10.1016/j.patter.2022.100488
 
 ```
 
-Here, we see there are two models packaged together in the `matscholar_2020v1` package and four are packaged together in `matbert_ner_2021v1`. The model package names and the model names are what we will use to load them in the following code.
+Here, we see there are two models packaged together in the `matscholar_2020v1` package, one in `relevance_2020v1`, and four are packaged together in `matbert_ner_2021v1`. The model package names and the model names are what we will use to load them in the following code.
 
 ## Load a pretrained model (NER)
 
