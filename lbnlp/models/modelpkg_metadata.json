@@ -4,12 +4,12 @@
     "hash": "3f8353526062856cc6e4037a0e6f05173cbbb86efb72c2d2a558e096d8b2e465",
     "models": {
       "ner": {
-        "requirements": ["tensorflow==1.15.0"],
+        "requirements": ["tensorflow==1.15.0", "numpy==1.18.4", "gensim==3.7.1"],
         "description": "Named entity recognition for materials.",
         "citation": "https://doi.org/10.1021/acs.jcim.9b00470"
       },
       "ner_simple": {
-        "requirements": ["tensorflow==1.15.0"],
+        "requirements": ["tensorflow==1.15.0", "numpy==1.18.4", "gensim==3.7.1"],
         "description": "A simpler tagging scheme version of the regular matscholar2020v1 NER model.",
         "citation": "https://doi.org/10.1021/acs.jcim.9b00470"
       }
