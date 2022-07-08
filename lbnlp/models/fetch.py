@@ -82,7 +82,7 @@ class ModelPkgLoader:
         Returns:
 
         """
-        if self.modelpkg_name in ["matscholar_2020v1", "matbert_ner_2021v1"]:
+        if self.modelpkg_name in ["matscholar_2020v1", "matbert_ner_2021v1", "relevance_2020v1"]:
             print(f"Extracting file for model package {self.modelpkg_name}...")
             with zipfile.ZipFile(self.file_path, "r") as zipped:
                 zipped.extractall(self.structured_path)
